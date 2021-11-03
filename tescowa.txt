@@ -1,4 +1,31 @@
+zadanie 1
 CREATE TABLE postac (id_postaci INT PRIMARY KEY NOT NULL, nazwa VARCHAR(40) NOT NULL, rodzaj ENUM('wiking','ptak','kobieta'), data_ur DATE NOT NULL, wiek INT);
 INSERT INTO postac VALUES(1,'Bjorn','wiking','1042-10-10',88);
 INSERT INTO postac VALUES(2,'Drozd','ptak','1042-10-10',2);
 INSERT INTO postac VALUES(3,Tesciowa','kobieta','1000-09-12',88);
+UPDATE postac SET wiek='40' WHERE id_postaci='1';
+
+zadanie 2
+CREATE TABLE walizka(id_walizki INT PRIMARY KEY AUTO_INCREMENT, pojemnosc INT, kolor ENUM('rozowy','czerwony','teczowy','zolty') DEFAULT 'rozowy', id_wlasciciela INT, FOREIGN KEY(id_
+walizki) REFERENCES postac(id_postaci));
+INSERT INTO walizka VALUES(1, 20, 'czerwony', 1);
+INSERT INTO walizka VALUES(2, 45, 'rozowy', 3);
+
+zadanie 3
+CREATE TABLE izba(adres_budynku VARCHAR(50), nazwa_budynku VARCHAR (50), metraz INT, id_wlasciciela INT, FOREIGN KEY (id_wlasciciela) REFERENCES postac(id_postaci),PRIMARY KEY (adres_budynku, nazwa_budynku));
+ALTER TABLE izba ADD kolor varchar(20) DEFAULT ('czarny');
+INSERT INTO izba(adres_budynku,nazwa_budynku,metraz,kolor,id_wlasciciela) Values ('spizarnia','bagno',100,'czerwony',1);
+
+zadanie 4
+CREATE TABLE przetwory(id_przetworu INT PRIMARY KEY, rok_produkcji YEAR DEFAULT '1954', id_wykonawcy INT, FOREIGN KEY (id_wykonawcy) REFERENCES postac(id_postaci), zawartosc VARCHAR(100), dodatek VARCHAR(100) DEFAULT 'papryczka chilli', id_konsumenta INT, FOREIGN KEY(id_konsumenta) REFERENCES postac(id_postaci));
+INSERT INTO przetwory(id_przetworu,id_wykonawcy,zawartosc,id_konsumenta) VALUES(1,1,'Bigos',1);
+
+zadanie 5
+INSERT INTO postac VALUES (4,'Janusz','wiking','1042-10-09',40);
+INSERT INTO postac VALUES (5,'Andrzej','wiking','1042-10-08',40);
+INSERT INTO postac VALUES (6,'Sebastian','wiking','1042-10-07',40);
+INSERT INTO postac VALUES (7,'Brajanek','wiking','1042-10-06',40);
+INSERT INTO postac VALUES (8,'Mieczyslaw','wiking','1042-10-05',40);
+CREATE TABLE statek(nazwa_statku VARCHAR(50) PRIMARY KEY, rodzaj_statku ENUM('plywajacy','zatopiony'), data_wodowania DATE, ladownosc INT);
+INSERT INTO statek(nazwa_statku, rodzaj_statku, data_wodowania, ladownosc) VALUES ('Grazyna','plywajacy','1059-12-05',20);
+INSERT INTO statek(nazwa_statku, rodzaj_statku, data_wodowania, ladownosc) VALUES ('Jessica','zatopiony','1044-09-11',40);
