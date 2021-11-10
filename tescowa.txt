@@ -29,3 +29,12 @@ INSERT INTO postac VALUES (8,'Mieczyslaw','wiking','1042-10-05',40);
 CREATE TABLE statek(nazwa_statku VARCHAR(50) PRIMARY KEY, rodzaj_statku ENUM('plywajacy','zatopiony'), data_wodowania DATE, ladownosc INT);
 INSERT INTO statek(nazwa_statku, rodzaj_statku, data_wodowania, ladownosc) VALUES ('Grazyna','plywajacy','1059-12-05',20);
 INSERT INTO statek(nazwa_statku, rodzaj_statku, data_wodowania, ladownosc) VALUES ('Jessica','zatopiony','1044-09-11',40);
+ALTER TABLE postac ADD funkcja varchar(50);
+UPDATE postac SET funkcja = 'kapitan' WHERE nazwa = 'Bjorn'; 
+ALTER TABLE postac ADD statek varchar(50);
+ALTER TABLE postac ADD FOREIGN KEY (statek) REFERENCES statek(nazwa_statku);
+UPDATE postac SET Statek = 'Grazyna' WHERE rodzaj = 'wiking';
+UPDATE postac SET statek = 'Jessica' WHERE nazwa = 'Drozd';
+DELETE FROM izba WHERE nazwa_budynku = 'bagno';
+DROP TABLE izba;
+
