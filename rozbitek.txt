@@ -1,0 +1,27 @@
+Zadanie 1
+CREATE TABLE kreatura AS SELECT * from wikingowie.kreatura;
+CREATE TABLE zasob AS SELECT * from wikingowie.zasob;
+CREATE TABLE ekwipunek AS SELECT * from wikingowie.ekwipunek;
+select * from zasob;
+select * from zasob where rodzaj='jedzenie';
+select idZasobu, ilosc  from ekwipunek where idKreatury=1 or idKreatury=2 or idKreatury=3;
+
+Zadanie 2
+SELECT * FROM kreatura WHERE NOT rodzaj = 'wiedzma' AND udzwig > 50 or udzwig = 50;
+SELECT * FROM zasob WHERE waga BETWEEN 2 AND 5;
+SELECT * FROM kreatura WHERE nazwa LIKE '%or%' AND udzwig BETWEEN 30 AND 70;
+
+Zadanie 3
+SELECT * FROM zasob WHERE MONTH(dataPozyskania) BETWEEN 7 AND 8;
+SELECT * FROM zasob WHERE rodzaj IS NOT NULL ORDER BY waga;
+SELECT * FROM kreatura ORDER BY dataUr DESC LIMIT 5;
+
+Zadanie 4
+SELECT DISTINCT rodzaj FROM zasob;
+SELECT DISTINCT nazwa,rodzaj FROM kreatura WHERE rodzaj LIKE 'wi%';
+SELECT nazwa,waga*ilosc FROM zasob WHERE YEAR(dataPozyskania) BETWEEN 2000 AND 2007;
+
+Zadanie 5
+SELECT nazwa,waga*ilosc*0.7 AS 'Netto', waga*ilosc*0.3 AS 'Odpady' FROM zasob WHERE rodzaj = 'jedzenie';
+SELECT * FROM zasob WHERE rodzaj IS NULL;
+SELECT DISTINCT nazwa FROM zasob WHERE nazwa LIKE 'ba%' or nazwa LIKE '%os' ORDER BY nazwa ASC;
